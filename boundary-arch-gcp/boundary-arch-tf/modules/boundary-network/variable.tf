@@ -2,7 +2,7 @@ variable "project-id" {
   type = string
 }
 
-variable "boundary-vpc-name" {
+variable "vpc_name" {
   default = "boundary-vpc"
   type    = string
 }
@@ -15,6 +15,9 @@ variable "public-subnet" {
 variable "private-subnet" {
   default = "boundary-private-subnet"
   type    = string
+}
+variable "vault-name" {
+  type = string
 }
 variable "region" {
   type = string

@@ -1,7 +1,7 @@
 # Allow internal traffic in the VPC (restrict ports where needed)
 
 resource "google_compute_firewall" "boudary-controller-to-all" {
-  name     = "${var.boundary-vpc-name}-internal"
+  name     = "${var.vpc_name}-internal"
   network  = google_compute_network.boundary_vpc.id
   priority = 900
   allow {
@@ -21,7 +21,7 @@ resource "google_compute_firewall" "boudary-controller-to-all" {
 
 #  ALLOW controllers to workers
 resource "google_compute_firewall" "allow-controller-to-worker" {
-  name    = "${var.boundary-vpc-name}-allow-controller-to-worker"
+  name    = "${var.vpc_name}-allow-controller-to-worker"
   network = google_compute_network.boundary_vpc.id
   allow {
     protocol = "tcp"
@@ -33,7 +33,7 @@ resource "google_compute_firewall" "allow-controller-to-worker" {
 
 #  ALLOW consul server communication
 resource "google_compute_firewall" "allow-consul" {
-  name    = "${var.boundary-vpc-name}-allow-consul"
+  name    = "${var.vpc_name}-allow-consul"
   network = google_compute_network.boundary_vpc.id
   allow {
     protocol = "tcp"
@@ -51,7 +51,7 @@ resource "google_compute_firewall" "allow-consul" {
 
 # Allow IAP to Boundary Workers
 resource "google_compute_firewall" "allow-iap-to-boundary-workers" {
-  name    = "${var.boundary-vpc-name}-allow-iap-to-boundary-workers"
+  name    = "${var.vpc_name}-allow-iap-to-boundary-workers"
   network = google_compute_network.boundary_vpc.id
   allow {
     protocol = "tcp"
@@ -64,7 +64,7 @@ resource "google_compute_firewall" "allow-iap-to-boundary-workers" {
 
 #Allow boundary worker to vm's
 resource "google_compute_firewall" "allow-worker-to-vm" {
-  name    = "${var.boundary-vpc-name}-allow-worker-to-vm"
+  name    = "${var.vpc_name}-allow-worker-to-vm"
   network = google_compute_network.boundary_vpc.id
   allow {
     protocol = "tcp"
@@ -78,7 +78,7 @@ resource "google_compute_firewall" "allow-worker-to-vm" {
 
 #Allow Loadbalancer health checks
 resource "google_compute_firewall" "allow-lb-health-checks" {
-  name    = "${var.boundary-vpc-name}-allow-lb-health-checks"
+  name    = "${var.vpc_name}-allow-lb-health-checks"
   network = google_compute_network.boundary_vpc.id
   allow {
     protocol = "tcp"

@@ -12,3 +12,15 @@ variable "zone" {
 variable "credentials" {
   type = string
 }
+variable "vpc_name" {
+  type = string
+}
+variable "public-subnet" {
+  type = string
+}
+variable "private-subnet" {
+  type = string
+}
+variable "vault-name" {
+  type = string
+}
