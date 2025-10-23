@@ -2,11 +2,11 @@ variable "project-id" {
   type = string
 }
 variable "region" {
-  type = string
+  type    = string
   default = "us-central1"
 }
 variable "zone" {
-  type = string
+  type    = string
   default = "us-central1-c"
 }
 variable "credentials" {
